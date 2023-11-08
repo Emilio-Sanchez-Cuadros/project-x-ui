@@ -27,8 +27,8 @@
                                       Salary
                                   </th>
                               </thead>
-                              <tbody>
-                                  <tr *ngFor="let user of usersList">
+                              <tbody class="user-row">
+                                  <tr (click)="seeUserDetails(user._id)" *ngFor="let user of usersList">
                                       <td>
                                           {{ user._id }}
                                       </td>

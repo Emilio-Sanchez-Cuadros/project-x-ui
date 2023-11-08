@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'app/models/user';
 import { UserService } from 'app/services/user.service';
 
@@ -12,7 +13,8 @@ export class TableListComponent implements OnInit {
   usersList: User[] = [];
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -20,6 +22,10 @@ export class TableListComponent implements OnInit {
       console.log('ngOnInit()', res);
       this.usersList = res;
     })
+  }
+
+  seeUserDetails(userId: any) {
+    this.router.navigate(['/user-profile', { userId }])
   }
 
 }

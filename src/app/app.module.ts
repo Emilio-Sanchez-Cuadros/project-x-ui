@@ -1,5 +1,5 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -7,21 +7,31 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { BrowserModule } from '@angular/platform-browser';
+
+const components = [
+  AppComponent,
+  AdminLayoutComponent
+];
+
+const modules = [
+  BrowserAnimationsModule,
+  FormsModule,
+  ReactiveFormsModule,
+  HttpClientModule,
+  ComponentsModule,
+  RouterModule,
+  AppRoutingModule,
+  BrowserModule
+];
 
 @NgModule({
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
-    BrowserAnimationsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ComponentsModule,
-    RouterModule,
-    AppRoutingModule,
+    ...modules
   ],
   declarations: [
-    AppComponent,
-    AdminLayoutComponent,
-
+    ...components
   ],
   providers: [],
   bootstrap: [AppComponent]

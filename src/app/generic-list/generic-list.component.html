@@ -1,0 +1,18 @@
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table">
+            <thead class=" text-primary">
+                <th *ngFor="let head of columns">
+                    {{ head }}
+                </th>
+            </thead>
+            <tbody class="user-row">
+                <tr (click)="seeEntityDetails(entity._id)" *ngFor="let entity of list">
+                    <td *ngFor="let head of columns">
+                        {{ entity.head }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

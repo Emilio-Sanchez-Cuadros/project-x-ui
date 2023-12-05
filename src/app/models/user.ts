@@ -4,4 +4,6 @@ export interface User {
     password: string,
     role: string,
     status: string
+    createdAt: Date,
+    updatedAt: Date
 }

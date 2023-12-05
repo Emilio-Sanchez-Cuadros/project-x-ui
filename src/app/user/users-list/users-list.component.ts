@@ -4,13 +4,14 @@ import { User } from 'app/models/user';
 import { UserService } from 'app/services/user.service';
 
 @Component({
-  selector: 'app-table-list',
-  templateUrl: './table-list.component.html',
-  styleUrls: ['./table-list.component.css']
+  selector: 'users-list',
+  templateUrl: './users-list.component.html',
+  styleUrls: ['./users-list.component.css']
 })
 export class TableListComponent implements OnInit {
 
   usersList: User[] = [];
+  columns = ['Id', 'Username', 'Country', 'City', 'Salary']
 
   constructor(
     private userService: UserService,
@@ -19,8 +20,12 @@ export class TableListComponent implements OnInit {
 
   ngOnInit() {
     this.userService.getUsers().subscribe(res => {
-      console.log('ngOnInit()', res);
       this.usersList = res;
+      let otherUsers = [...this.usersList];
+      otherUsers.pop();
+      console.log('this.usersList', this.usersList);
+      console.log('otherUsers', otherUsers);
+
     })
   }
 
